@@ -12,7 +12,7 @@
       let parent;
       let havingChild;
       let child;
-      const amount = 5000;
+      const AMOUNT = 5000;
       function getParent(flag) {
         if (flag) {
           parent = window.prompt("Your Name");
@@ -72,7 +72,7 @@
           commDet.textContent = 'COMMISSION DETAILS :-';
           body.appendChild(commDet);
           let displayParent = document.createElement("h1");
-          let parentProfit = (amount * 5) / 100;
+          let parentProfit = (AMOUNT * 5) / 100;
           displayParent.textContent =
             parent + " profit = Rs. " + parentProfit + "/-";
           body.appendChild(displayParent);
@@ -90,17 +90,17 @@
             if (current == null || current.trim() == "") {
               return res;
             } else {
-              let childProfit = (amount * 5) / 100;
+              let childProfit = (AMOUNT * 5) / 100;
               let childMember = document.createElement("h1");
               childMember.textContent =
                 current + " Profit = Rs. " + childProfit + "/-";
               body.appendChild(childMember);
               members += 1;
-              return res + (amount * 10) / 100;
+              return res + (AMOUNT * 10) / 100;
             }
           }, 0);
           if (parentProfit == 0) {
-            parentProfit = (amount * 5) / 100;
+            parentProfit = (AMOUNT * 5) / 100;
           }
           totalMembers.textContent = "Total Members = " + members;
           displayParent.textContent =
