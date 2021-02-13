@@ -20,7 +20,7 @@
         } else {
           parent = window.prompt("Please Enter Your Name!!!");
         }
-        if (parent == null || parent == "") {
+        if (parent == null || parent.trim() == "") {
           getParent(flag);
         } else {
           haveChild(true);
