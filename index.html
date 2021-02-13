@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chain Marketing</title>
+</head>
+<body id = 'body'>
+    <script>
+        let body = document.getElementById('body');
+        let parent;
+        let havingChild;
+        let child;
+        const amount = 5000;
+        function getParent(flag){
+            if(flag)
+            {
+                parent = window.prompt('Your Name');
+                flag = !flag;
+            }
+            else{
+                parent = window.prompt('Please Enter Your Name!!!');
+            }
+            if(parent == null || parent == "")
+            {
+                getParent(flag);
+            }
+            else{
+                haveChild(true);
+            }
+        }
+
+        function haveChild(flag){
+            if(flag)
+            {
+                havingChild = window.prompt('Do you have any member under you? (Y = Yes/ N = No)');
+                flag = !flag;
+            }
+            else{
+                havingChild = window.prompt('Please enter Y if you have member to join or Enter N !!!....');
+            }
+            if(havingChild == 'Y' || havingChild == 'y')
+            {
+                getChild(true);
+            }
+            else if(havingChild == 'N' || havingChild == 'n')
+            {
+                display();
+            }
+            else{
+                haveChild(flag);
+            }
+        }
+
+        function getChild(flag)
+        {
+            if(flag)
+            {
+                child = window.prompt("Enter Member's Name Comma(',') Seperated.");
+                flag = !flag;
+            }
+            else{
+                child = window.prompt("Please Enter Your Member's Name Comma(',') Seperated!!!...");
+            }
+            if(child == null || child == "")
+            {
+                getChild(flag);
+            }
+            else{
+                display();
+            }
+        }
+
+        function display(){
+            if(havingChild == "N" || havingChild == "n")
+            {
+                let totalMembers = document.createElement('h1');
+                totalMembers.textContent = 'Total Members = 1';
+                body.appendChild(totalMembers);
+                let displayParent = document.createElement('h1');
+                let parentProfit = (amount * 5) / 100;
+                displayParent.textContent = parent + " profit = Rs. " + parentProfit +"/-";
+                body.appendChild(displayParent);
+            }
+            else{
+                let childArr = child.split(',');
+                let members = 1;
+                let totalMembers = document.createElement('h1');
+                body.appendChild(totalMembers);
+                let displayParent = document.createElement('h1');
+                body.appendChild(displayParent);
+                let parentProfit = childArr.reduce((res,current) => {
+                    if(current == null || current == ""){
+                        return res;
+                    }
+                    else{
+                        let childProfit = (amount * 5) / 100;
+                let childMember = document.createElement('h1');
+                    childMember.textContent = current + ' Profit = Rs. ' + childProfit + "/-";
+                    body.appendChild(childMember);
+                    members += 1;
+                    return res + (amount * 10) / 100;
+                    }
+                },0);
+                if(parentProfit == 0)
+                {
+                    parentProfit = (amount * 5) / 100;
+                }
+                totalMembers.textContent = 'Total Members = ' + members;
+                displayParent.textContent = parent + " Profit = Rs. " + parentProfit + '/-';
+            }
+            let button = document.createElement('button');
+                button.textContent = "Add New Member";
+                let click = document.createAttribute('id');
+                click.value = 'button';
+                button.setAttributeNode(click);
+                body.appendChild(button);
+        }  
+
+        getParent(true);
+
+        document.getElementById('button').addEventListener('click',()=>{
+            location.reload();
+        });
+
+    </script>
+</body>
+</html>
