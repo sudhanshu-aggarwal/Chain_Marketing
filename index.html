@@ -87,7 +87,7 @@
           let displayParent = document.createElement("h1");
           body.appendChild(displayParent);
           let parentProfit = childArr.reduce((res, current) => {
-            if (current == null || current == "") {
+            if (current == null || current.trim() == "") {
               return res;
             } else {
               let childProfit = (amount * 5) / 100;
